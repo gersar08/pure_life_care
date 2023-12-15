@@ -15,7 +15,9 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
+
+    $DATABASE_URL = parse_url('postgres://pjgmvazynqfojo:3fafc7a2d671897b8873adcc57179b63708ceb995035f5b22fbc47969dd2c80e@ec2-3-232-218-211.compute-1.amazonaws.com:5432/d61raqq55l1fu8'),
 
     /*
     |--------------------------------------------------------------------------
@@ -60,13 +62,13 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
-          ],
+        ],
 
         'pgsql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
+            'database' => ltrim($DATABASE_URL["path"], "/"),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
