@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class ProductoController extends Controller
-{
-    public function index()
+{     public function index()
     {
-        if (Gate::denies('viewAny', Producto::class)) {
-            abort(403);
-        }
+            if (Gate::denies('viewAny', Producto::class)) {
+                abort(403);
+            }
         $preciosEspeciales = Producto::all();
         return response()->json($preciosEspeciales);
     }
@@ -46,8 +45,8 @@ class ProductoController extends Controller
         $this->authorize('update', $producto);
 
         $validatedData = $request->validate([
-            'producto_name' => ['string', 'max:255'],
-            'precio_base' => ['numeric'],
+            'producto_name' => ['required', 'string', 'max:255'],
+            'precio_base' => ['required', 'numeric'],
         ]);
 
         $producto->update($validatedData);
