@@ -30,8 +30,8 @@ class ProductoController extends Controller
         $this->authorize('create', Producto::class);
 
         $validatedData = $request->validate([
-            'product_name' => ['required', 'string', 'max:255'],
-            'precio_base' => ['required', 'numeric'],
+            'product_name' => [ 'string', 'max:255'],
+            'precio_base' => ['numeric'],
         ]);
 
         $item = Producto::create($validatedData);
