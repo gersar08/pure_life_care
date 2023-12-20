@@ -42,8 +42,8 @@ class ProductoController extends Controller
         $this->authorize('update', $producto);
 
         $validatedData = $request->validate([
-            'producto_name' => ['required', 'string', 'max:255'],
-            'precio_base' => ['required', 'numeric'],
+            'producto_name' => ['string', 'max:255'],
+            'precio_base' => [ 'numeric'],
         ]);
 
         $producto->update($validatedData);
