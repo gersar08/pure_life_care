@@ -12,7 +12,7 @@ class Factura extends Model
     protected $fillable = [
         'cliente_id',
         'producto_name',
-        'precio_id',
+        'precio',
         'cantidad',
         'subtotal',
         'total'
