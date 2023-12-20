@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Gate;
 class ProductoController extends Controller
 {     public function index()
     {
-            if (Gate::denies('viewAny', PrecioEspecial::class)) {
+            if (Gate::denies('viewAny', Producto::class)) {
                 abort(403);
             }
         $preciosEspeciales = Producto::all();
@@ -27,7 +27,7 @@ class ProductoController extends Controller
     }
     public function store(Request $request)
     {
-        $this->authorize('create', Inventario::class);
+        $this->authorize('create', Producto::class);
 
         $validatedData = $request->validate([
             'product_name' => ['required', 'string', 'max:255'],
