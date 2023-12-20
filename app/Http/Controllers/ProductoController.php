@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Gate;
 class ProductoController extends Controller
 {     public function index()
     {
-            if (Gate::denies('viewAny', Producto::class)) {
-                abort(403);
-            }
         $preciosEspeciales = Producto::all();
         return response()->json($preciosEspeciales);
     }
