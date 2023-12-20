@@ -14,7 +14,7 @@ class ProductosTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('precios')->insert([
+        DB::table('productos')->insert([
             [
                 'producto_name' => 'garrafa',
                 'precio_base' => 2.15

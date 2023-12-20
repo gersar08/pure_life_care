@@ -11,7 +11,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\PrecioEspecialController;
 use App\Http\Controllers\RegistroVentasDailyController;
 use App\Http\Controllers\RegistroVentasWeeklyController;
 
@@ -41,17 +40,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/inventario/search/{field}/{query}', [InventarioController::class, 'search']);
     Route::delete('/inventario/{id}', [InventarioController::class, 'destroy']);
 
-    Route::get('/precios', [ProductoController::class, 'index']);
-    Route::put('/precios/{id}', [ProductoController::class, 'update']);
+    Route::get('/productos', [ProductoController::class, 'index']);
+    Route::put('/productos/{id}', [ProductoController::class, 'update']);
     Route::post('/productos', [ProductoController::class, 'store']);
-    Route::get('/precios/search/{field}/{query}', [ProductoController::class, 'search']);
-    Route::delete('/precios/{id}', [ProductoController::class, 'destroy']);
-
-    Route::get('/precio-especial', [PrecioEspecialController::class, 'index']);
-    Route::put('/precio-especial/{id}', [PrecioEspecialController::class, 'update']);
-    Route::post('/precio-especial', [PrecioEspecialController::class, 'store']);
-    Route::get('/precio-especial/search/{field}/{query}', [PrecioEspecialController::class, 'search']);
-    Route::delete('/precio-especial/{id}', [PrecioEspecialController::class, 'destroy']);
+    Route::get('/productos/search/{field}/{query}', [ProductoController::class, 'search']);
+    Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
 
     Route::post('/registro/daily', [RegistroVentasDailyController::class, 'store']);
     Route::put('/registro/daily/{id}', [RegistroVentasDailyController::class, 'update']);
