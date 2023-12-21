@@ -23,15 +23,6 @@ class RegistroVentasDailyController extends Controller
             'pet' => 'required'
         ]);
 
-        DB::table('registro_ventas_daily')->insert([
-            'cliente_id' => $validatedData['cliente_id'],
-            'fardo' => $validatedData['fardo'],
-            'garrafa' => $validatedData['garrafa'],
-            'pet' => $validatedData['pet'],
-            'updated_at' => now(),
-            'created_at' => now()
-        ]);
-
         // Crear el registro
         $registro = RegistroVentasDaily::create($validatedData);
 
