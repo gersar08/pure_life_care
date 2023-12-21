@@ -23,7 +23,7 @@ class RegistroVentasDailyController extends Controller
             'pet' => 'required'
         ]);
 
-        DB::table('RegistroVentasDaily')->insert([
+        DB::table('registro_ventas_daily')->insert([
             'cliente_id' => $validatedData['cliente_id'],
             'fardo' => $validatedData['fardo'],
             'garrafa' => $validatedData['garrafa'],
