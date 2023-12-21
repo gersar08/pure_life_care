@@ -21,7 +21,7 @@ class RegistroVentasDailyController extends Controller
             'fardo' => 'required',
             'garrafa' => 'required',
             'pet' => 'required',
-            'total' => 'required',
+            'total' => 'nullable',
         ]);
 
         DB::table('RegistroVentasDaily')->insert([
