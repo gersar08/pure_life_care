@@ -11,6 +11,8 @@ class RegistroVentasDaily extends Model
 {
     use HasFactory;
 
+    // Especifica el nombre de la tabla
+    protected $table = 'registro_ventas_daily';
     protected $fillable = [
         'cliente_id',
         'fardos',
