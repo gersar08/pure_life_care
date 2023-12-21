@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('RegistroVentasWeekly', function (Blueprint $table) {
+        Schema::create('registro_ventas_weekly', function (Blueprint $table) {
             $table->id();
-            $table->string('cliente_id')->unique();
+            $table->string('cliente_id');
             $table->unsignedInteger('fardo');
             $table->unsignedInteger('garrafa');
             $table->unsignedInteger('pet');
-            $table->decimal('total', 10, 2);
             $table->timestamps();
 
-            $table->foreign('cliente_id')->references('unique_id')->on('clientes');
         });
     }
 

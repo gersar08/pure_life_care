@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('RegistroVentasDaily', function (Blueprint $table) {
+        Schema::create('registro_ventas_daily', function (Blueprint $table) {
             $table->id();
             $table->string('cliente_id');
             $table->unsignedInteger('fardo');

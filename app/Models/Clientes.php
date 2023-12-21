@@ -21,19 +21,4 @@ class Clientes extends Model
         'direccion',
         'n_documento',
     ];
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($cliente) {
-            RegistroVentasDaily::create([
-                'cliente_id' => $cliente->unique_id,
-                // Aquí puedes definir los valores por defecto para los otros campos
-            ]);
-            RegistroVentasWeekly::create([
-                'cliente_id' => $cliente->unique_id,
-                // Aquí puedes definir los valores por defecto para los otros campos
-            ]);
-        });
-    }
 }

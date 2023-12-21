@@ -10,10 +10,7 @@ use App\Models\Cliente;
 class RegistroVentasWeekly extends Model
 {
     use HasFactory;
+    protected $table = 'registro_ventas_weekly';
+    protected $fillable = ['cliente_id', 'fardos', 'garrafas', 'pet'];
 
-    protected $fillable = ['cliente_id', 'fardos', 'garrafas', 'pet', 'total'];
-    public function cliente()
-    {
-        return $this->belongsTo(Cliente::class, 'cliente_id', 'unique_id');
-    }
 }
