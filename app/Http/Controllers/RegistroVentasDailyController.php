@@ -17,7 +17,7 @@ class RegistroVentasDailyController extends Controller
     {
         // Aquí debes validar los datos de la solicitud según las reglas de tu modelo
         $validatedData = $request->validate([
-            'cliente_id' => ['string',  'exists:clientes,unique_id'],
+            'cliente_id' => ['string'],
             'fardo'  => ['string'],
             'garrafa' => ['integer'],
             'pet' => ['integer'],
