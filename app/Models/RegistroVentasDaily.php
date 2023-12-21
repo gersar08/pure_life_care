@@ -13,8 +13,8 @@ class RegistroVentasDaily extends Model
     protected $table = 'registro_ventas_daily';
     protected $fillable = [
         'cliente_id',
-        'fardos',
-        'garrafas',
+        'fardo',
+        'garrafa',
         'pet',
     ];
 }
