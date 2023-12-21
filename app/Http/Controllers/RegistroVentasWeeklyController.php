@@ -20,8 +20,7 @@ class RegistroVentasWeeklyController extends Controller
             'cliente_id' => ['required', 'string'],
             'fardos'  => ['required', 'string'],
             'garrafas' => ['required', 'integer'],
-            'pet' => ['required', 'integer'],
-            'total' => ['required', 'decimal'],
+            'pet' => ['required', 'integer']
             // ...
         ]);
 
