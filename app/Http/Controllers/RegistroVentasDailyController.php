@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RegistroVentasDaily;
+use Illuminate\Support\Facades\DB;
 
 class RegistroVentasDailyController extends Controller
 {
@@ -15,13 +16,22 @@ class RegistroVentasDailyController extends Controller
 
     public function store(Request $request)
     {
-        // Aquí debes validar los datos de la solicitud según las reglas de tu modelo
         $validatedData = $request->validate([
-            'cliente_id' => ['required', 'string'],
-            'fardo'  => ['required', 'integer'],
-            'garrafa' => ['required', 'integer'],
-            'pet' => ['required', 'integer'],
-            'total' => ['required', 'numeric'],
+            'cliente_id' => 'required',
+            'fardo' => 'required',
+            'garrafa' => 'required',
+            'pet' => 'required',
+            'total' => 'required',
+        ]);
+
+        DB::table('RegistroVentasDaily')->insert([
+            'cliente_id' => $validatedData['cliente_id'],
+            'fardo' => $validatedData['fardo'],
+            'garrafa' => $validatedData['garrafa'],
+            'pet' => $validatedData['pet'],
+            'total' => $validatedData['total'],
+            'updated_at' => now(),
+            'created_at' => now()
         ]);
 
         // Crear el registro
