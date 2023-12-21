@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\RegistroVentasDaily;
+use App\Models\RegistroVentasDaily; // Add this import statement
 use Illuminate\Support\Facades\DB;
 
 class RegistroVentasDailyController extends Controller
@@ -20,8 +20,7 @@ class RegistroVentasDailyController extends Controller
             'cliente_id' => 'required',
             'fardo' => 'required',
             'garrafa' => 'required',
-            'pet' => 'required',
-            'total' => 'nullable',
+            'pet' => 'required'
         ]);
 
         DB::table('RegistroVentasDaily')->insert([
@@ -29,7 +28,6 @@ class RegistroVentasDailyController extends Controller
             'fardo' => $validatedData['fardo'],
             'garrafa' => $validatedData['garrafa'],
             'pet' => $validatedData['pet'],
-            'total' => $validatedData['total'],
             'updated_at' => now(),
             'created_at' => now()
         ]);

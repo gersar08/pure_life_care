@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedInteger('fardo');
             $table->unsignedInteger('garrafa');
             $table->unsignedInteger('pet');
-            $table->decimal('total', 10, 2)->nullable();
             $table->timestamps();
         });
     }

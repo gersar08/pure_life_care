@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Cliente;
-
 
 class RegistroVentasDaily extends Model
 {
@@ -18,10 +16,5 @@ class RegistroVentasDaily extends Model
         'fardos',
         'garrafas',
         'pet',
-        'total'
     ];
-    public function cliente()
-    {
-        return $this->belongsTo(Clientes::class, 'cliente_id', 'unique_id');
-    }
 }
