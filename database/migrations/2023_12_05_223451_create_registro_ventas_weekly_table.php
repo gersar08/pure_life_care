@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('registro_ventas_weekly', function (Blueprint $table) {
             $table->id();
-            $table->string('cliente_id');
+            $table->string('cliente_id')->unique();
             $table->unsignedInteger('fardo');
             $table->unsignedInteger('garrafa');
             $table->unsignedInteger('pet');
