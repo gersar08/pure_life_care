@@ -7,6 +7,7 @@ use App\Models\RegistroVentasDaily; // Add this import statement
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
+
 class RegistroVentasDailyController extends Controller
 {
     public function index()
