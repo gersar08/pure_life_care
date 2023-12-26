@@ -42,7 +42,7 @@ class RegistroVentasWeeklyController extends Controller
 
     public function search(Request $request)
     {
-        $clienteId = $request->input('cliente_id');
+        $clienteId = $request->cliente_id;
         // Validar que el cliente_id sea proporcionado
         if (!$clienteId) {
             return response()->json(['error' => 'Debes proporcionar un cliente_id'], 400);
