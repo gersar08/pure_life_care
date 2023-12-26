@@ -42,11 +42,22 @@ class RegistroVentasWeeklyController extends Controller
 
     public function search(Request $request)
     {
-        $cliente_id = $request->get('cliente_id');
-        $registros = RegistroVentasWeekly::where('cliente_id', $cliente_id)->get();
+        $clienteId = $request->input('cliente_id');
+        // Validar que el cliente_id sea proporcionado
+        if (!$clienteId) {
+            return response()->json(['error' => 'Debes proporcionar un cliente_id'], 400);
+        }
+        // Buscar el artículo por cliente_id
+        $articulo = RegistroVentasWeekly::where('cliente_id', $clienteId)->first();
 
-        return response()->json($registros);
+        // Verificar si se encontró un artículo
+        if ($articulo) {
+            return response()->json(['articulo' => $articulo], 200);
+        } else {
+            return response()->json(['message' => 'Artículo no encontrado'], 404);
+        }
     }
+
 
     public function destroy(string $id)
     {

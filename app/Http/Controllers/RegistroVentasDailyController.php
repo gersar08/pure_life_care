@@ -30,19 +30,23 @@ class RegistroVentasDailyController extends Controller
 
         return response()->json($registro);
     }
+
     public function search(Request $request)
     {
-        $cliente_id = $request->get('cliente_id');
+        $clienteId = $request->input('cliente_id');
+        // Validar que el cliente_id sea proporcionado
+        if (!$clienteId) {
+            return response()->json(['error' => 'Debes proporcionar un cliente_id'], 400);
+        }
+        // Buscar el artículo por cliente_id
+        $articulo = RegistroVentasDaily::where('cliente_id', $clienteId)->first();
 
-        // Log the cliente_id
-        Log::info('cliente_id: ' . $cliente_id);
-
-        $registros = RegistroVentasDaily::where('cliente_id', $cliente_id)->get();
-
-        // Log the result
-        Log::info('registros: ', $registros->toArray());
-
-        return response()->json($registros);
+        // Verificar si se encontró un artículo
+        if ($articulo) {
+            return response()->json(['articulo' => $articulo], 200);
+        } else {
+            return response()->json(['message' => 'Artículo no encontrado'], 404);
+        }
     }
 
     public function update(Request $request, string $cliente_id)
