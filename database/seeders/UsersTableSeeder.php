@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin User',
             'user_name' => 'admin',
             'password' => bcrypt('contra152'), // Cambia 'password' por la contraseña que quieras
-            'role'=> 'user'
+            'role'=> 'admin'
         ]);
 
         // Asignar el rol de administrador al usuario administrador
