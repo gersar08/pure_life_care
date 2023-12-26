@@ -36,15 +36,16 @@ class RegistroVentasDailyController extends Controller
         return response()->json($registros);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $cliente_id)
     {
-        $registro = RegistroVentasDaily::findOrFail($id);
+        $registro = RegistroVentasDaily::where('cliente_id', $cliente_id)->firstOrFail();
 
         // Actualizar los datos del registro
         $registro->update($request->all());
 
         return response()->json($registro);
     }
+
 
     public function destroy(string $id)
     {
