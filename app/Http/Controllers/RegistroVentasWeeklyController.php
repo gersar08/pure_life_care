@@ -48,11 +48,11 @@ class RegistroVentasWeeklyController extends Controller
             return response()->json(['error' => 'Debes proporcionar un cliente_id'], 400);
         }
         // Buscar el artículo por cliente_id
-        $articulo = RegistroVentasWeekly::where('cliente_id', $clienteId)->first();
+        $registro = RegistroVentasWeekly::where('cliente_id', $clienteId)->first();
 
         // Verificar si se encontró un artículo
-        if ($articulo) {
-            return response()->json(['articulo' => $articulo], 200);
+        if ($registro) {
+            return response()->json( $registro, 200);
         } else {
             return response()->json(['message' => 'Artículo no encontrado'], 404);
         }
