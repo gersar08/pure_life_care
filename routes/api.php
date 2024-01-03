@@ -34,7 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/clientes/search/{field}/{query}', [ClientesController::class, 'search']);
     Route::delete('/clientes/{id}', [ClientesController::class, 'destroy']);
 
-    Route::get('/inventario', [InventarioController::class, 'index']); //problema
+    Route::get('/inventario', [InventarioController::class, 'index']);
     Route::put('/inventario/{id}', [InventarioController::class, 'update']);
     Route::post('/inventario', [InventarioController::class, 'store']);
     Route::get('/inventario/search/{field}/{query}', [InventarioController::class, 'search']);
