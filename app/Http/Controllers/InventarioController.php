@@ -30,7 +30,8 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'product_name' => ['required', 'string', 'max:255'],
+            'product_name' => ['required', 'string'],
+            'product_area' => ['required', 'string'],
             'cantidad' => ['required', 'integer'],
             // Agrega aquí más campos según sea necesario
         ]);
