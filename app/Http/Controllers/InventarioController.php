@@ -29,6 +29,8 @@ class InventarioController extends Controller
     }
     public function store(Request $request)
     {
+        $this->authorize('update', Inventario::class);
+
         $validatedData = $request->validate([
             'product_name' => ['required', 'string'],
             'product_area' => ['required', 'string'],
