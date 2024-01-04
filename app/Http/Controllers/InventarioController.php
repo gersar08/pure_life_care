@@ -63,7 +63,7 @@ class InventarioController extends Controller
         ]);
     }
 
-    public function destroy(Inventario $id)
+    public function destroy(string $id)
     {
         $inventario = Inventario::findOrFail($id);
         $this->authorize('delete', $inventario);
