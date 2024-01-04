@@ -10,7 +10,7 @@ class CreateInventarioTable extends Migration
     {
         Schema::create('inventario', function (Blueprint $table) {
             $table->id();
-            $table->string('product_name');
+            $table->string('product_name')->unique();
             $table->string('product_area');
             $table->integer('cantidad');
             $table->timestamps();
