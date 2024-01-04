@@ -63,12 +63,11 @@ class InventarioController extends Controller
         ]);
     }
 
-    public function destroy(Inventario $inventario)
+    public function destroy(Inventario $id)
     {
+        $inventario = Inventario::findOrFail($id);
         $this->authorize('delete', $inventario);
-
         $inventario->delete();
-
-        return response()->json(null, 204);
+        return response()->json(['message' => 'Eliminado con éxito']);
     }
 }
