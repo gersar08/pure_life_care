@@ -68,20 +68,6 @@ class UserController extends Controller
         // Actualizar los datos del usuario
         $user->update($request->all());
 
-        // Si se proporcionó un rol en la solicitud, validar y actualizar el rol del usuario
-        if ($request->input('role')) {
-            // Validar el rol
-            $validatedData = $request->validate([
-                'role' => ['required', 'string', 'exists:roles,name'],
-            ]);
-
-            // Primero, revocar todos los roles actuales
-            $user->roles()->detach();
-
-            // Luego, asignar el nuevo rol
-            $user->assignRole($validatedData['role']);
-        }
-
         return response()->json($user);
     }
 
