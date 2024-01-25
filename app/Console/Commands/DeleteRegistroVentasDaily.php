@@ -8,7 +8,7 @@ use App\Models\RegistroVentasDaily;
 
 class DeleteRegistroVentasDaily extends Command
 {
-    protected $signature = 'delete:registroventasdaily';
+    protected $signature = 'delete:registro_ventas_daily';
     protected $description = 'Delete registro ventas daily and make a POST or PUT Request';
 
     public function __construct()
