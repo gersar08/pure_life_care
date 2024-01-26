@@ -28,35 +28,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create', User::class);
-
-        // Validar los datos de la solicitud
-        $validatedData = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'user_name' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'role' => ['required', 'string'], // Agrega esta línea
-
-        ]);
-        // Crear el usuario
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'user_name' => $validatedData['user_name'],
-            'password' => Hash::make($validatedData['password']),
-            'role' => $validatedData['role'],
-        ]);
-
-        // Crear el rol si no existe
-        if (array_key_exists('role', $validatedData)) {
-            $roleName = $validatedData['role']; // Obtiene el rol de los datos validados
-            $role = Role::firstOrCreate(['guard_name' => 'web', 'name' => $roleName]);
-
-            // Asignar el rol al usuario
-            $user->assignRole($role); // Asigna el rol al usuario
-        } else {
-            // Maneja el caso en que la clave 'role' no existe en $validatedData
-            return response()->json(['error' => 'No se proporcionó un rol'], 400);
-        }
-        return response()->json(['message' => 'Usuario creado exitosamente'], 201);
+        $cliente = User::create($request->all());
+        return response()->json($cliente, 201);
     }
 
 
