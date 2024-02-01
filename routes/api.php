@@ -47,7 +47,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
 
     Route::post('/registro/daily', [RegistroVentasDailyController::class, 'store']);
-    Route::put('/registro/daily/{id}', [RegistroVentasDailyController::class, 'update']);
+    Route::put('/registro/daily/{cliente_id}', [RegistroVentasDailyController::class, 'update']);
     Route::delete('/registro/daily/{id}', [RegistroVentasDailyController::class, 'destroy']);
     Route::get('/registro/daily/search/{cliente_id}', [RegistroVentasDailyController::class, 'search']);
     Route::get('/registro/daily/view', [RegistroVentasDailyController::class, 'index']);
