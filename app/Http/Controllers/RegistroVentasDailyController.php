@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RegistroVentasDaily; // Add this import statement
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-
+use App\Models\RegistroVentasWeekly;
 
 class RegistroVentasDailyController extends Controller
 {
@@ -65,5 +63,20 @@ class RegistroVentasDailyController extends Controller
         $registro = RegistroVentasDaily::findOrFail($id);
         $registro->delete();
         return response()->json(['message' => 'Registro deleted successfully']);
+    }
+    public function eliminarContenido()
+    {
+        // Obtén todos los registros de la tabla
+        $ventas = RegistroVentasDaily::all();
+
+        // Envía los datos a otra tabla
+        foreach ($ventas as $venta) {
+            RegistroVentasWeekly::create($venta->toArray());
+        }
+
+        // Luego, elimina el contenido de la tabla original
+        RegistroVentasDaily::truncate();
+
+        return response()->json(['message' => 'Contenido eliminado y movido con éxito']);
     }
 }
