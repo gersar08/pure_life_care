@@ -29,9 +29,9 @@ class RegistroVentasWeeklyController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $cliente_id)
     {
-        $registro = RegistroVentasWeekly::findOrFail($id);
+        $registro = RegistroVentasWeekly::where('cliente_id', $cliente_id)->firstOrFail();
 
         // Actualizar los datos del registro
         $registro->update($request->all());
