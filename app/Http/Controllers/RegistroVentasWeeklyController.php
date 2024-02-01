@@ -15,20 +15,17 @@ class RegistroVentasWeeklyController extends Controller
 
     public function store(Request $request)
     {
-        // Aquí debes validar los datos de la solicitud según las reglas de tu modelo
         $validatedData = $request->validate([
             'cliente_id' => 'required',
             'fardo' => 'required',
             'garrafa' => 'required',
             'pet' => 'required'
-            // ...
         ]);
 
         // Crear el registro
         $registro = RegistroVentasWeekly::create($validatedData);
 
-        return response()->json($registro);
-    }
+        return response()->json($registro); }
 
     public function update(Request $request, string $id)
     {
