@@ -67,34 +67,10 @@ class RegistroVentasDailyController extends Controller
 
     public function eliminarContenido()
     {
-        // Obtén todos los registros de la tabla
-        $ventas = RegistroVentasDaily::all();
-
-        // Envía los datos a otra tabla
-        foreach ($ventas as $venta) {
-            // Busca si ya existe un registro con el cliente_id dado
-            $ventaSemanal = RegistroVentasWeekly::where('cliente_id', $venta->cliente_id)->first();
-
-            if ($ventaSemanal) {
-                // Si existe, actualiza los valores
-                $ventaSemanal->fardo += $venta->fardo ?? 0;
-                $ventaSemanal->garrafa += $venta->garrafa ?? 0;
-                $ventaSemanal->pet += $venta->pet ?? 0;
-                $ventaSemanal->save();
-            } else {
-                // Si no existe, crea un nuevo registro
-                RegistroVentasWeekly::create([
-                    'cliente_id' => $venta->cliente_id ,
-                    'fardo' => empty($venta->fardo) ? 0 : $venta->fardo,
-                    'garrafa' => empty($venta->garrafa) ? 0 : $venta->garrafa,
-                    'pet' => empty($venta->pet) ? 0 : $venta->pet,
-                ]);
-            }
-        }
-
+ 
         // Luego, elimina el contenido de la tabla original
         RegistroVentasDaily::truncate();
 
-        return response()->json(['message' => 'Contenido eliminado y movido con éxito']);
+        return response()->json(['message' => 'Contenido eliminado con éxito']);
     }
 }
