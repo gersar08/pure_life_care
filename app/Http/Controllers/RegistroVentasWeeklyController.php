@@ -25,7 +25,9 @@ class RegistroVentasWeeklyController extends Controller
         // Crear el registro
         $registro = RegistroVentasWeekly::create($validatedData);
 
-        return response()->json($registro); }
+        return response()->json($registro);
+    }
+
 
     public function update(Request $request, string $id)
     {
@@ -49,7 +51,7 @@ class RegistroVentasWeeklyController extends Controller
 
         // Verificar si se encontró un artículo
         if ($registro) {
-            return response()->json( $registro, 200);
+            return response()->json($registro, 200);
         } else {
             return response()->json(['message' => 'Artículo no encontrado'], 404);
         }
