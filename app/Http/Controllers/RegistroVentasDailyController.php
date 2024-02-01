@@ -71,7 +71,14 @@ class RegistroVentasDailyController extends Controller
 
         // Envía los datos a otra tabla
         foreach ($ventas as $venta) {
-            RegistroVentasWeekly::create($venta->toArray());
+            $ventaArray = $venta->toArray();
+
+            // Proporciona un valor predeterminado para 'fardo' si es null
+            if ($ventaArray['fardo'] === null) {
+                $ventaArray['fardo'] = 0; // o cualquier valor predeterminado que desees
+            }
+
+            RegistroVentasWeekly::create($ventaArray);
         }
 
         // Luego, elimina el contenido de la tabla original
