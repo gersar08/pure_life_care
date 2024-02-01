@@ -84,10 +84,10 @@ class RegistroVentasDailyController extends Controller
             } else {
                 // Si no existe, crea un nuevo registro
                 RegistroVentasWeekly::create([
-                    'cliente_id' => $venta->cliente_id,
-                    'fardo' => $venta->fardo ,
-                    'garrafa' => $venta->garrafa ,
-                    'pet' => $venta->pet ,
+                    'cliente_id' => $venta->cliente_id ,
+                    'fardo' => $venta->fardo ?? 0,
+                    'garrafa' => $venta->garrafa ?? 0,
+                    'pet' => $venta->pet ?? 0,
                 ]);
             }
         }
