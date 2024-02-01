@@ -64,6 +64,7 @@ class RegistroVentasDailyController extends Controller
         $registro->delete();
         return response()->json(['message' => 'Registro deleted successfully']);
     }
+
     public function eliminarContenido()
     {
         // Obtén todos los registros de la tabla
@@ -71,14 +72,24 @@ class RegistroVentasDailyController extends Controller
 
         // Envía los datos a otra tabla
         foreach ($ventas as $venta) {
-            $ventaArray = $venta->toArray();
+            // Busca si ya existe un registro con el cliente_id dado
+            $ventaSemanal = RegistroVentasWeekly::where('cliente_id', $venta->cliente_id)->first();
 
-            // Proporciona un valor predeterminado para 'fardo' si es null
-            if ($ventaArray['fardo'] === null) {
-                $ventaArray['fardo'] = 0; // o cualquier valor predeterminado que desees
+            if ($ventaSemanal) {
+                // Si existe, actualiza los valores
+                $ventaSemanal->fardo += $venta->fardo ?? 0;
+                $ventaSemanal->garrafa += $venta->garrafa ?? 0;
+                $ventaSemanal->pet += $venta->pet ?? 0;
+                $ventaSemanal->save();
+            } else {
+                // Si no existe, crea un nuevo registro
+                RegistroVentasWeekly::create([
+                    'cliente_id' => $venta->cliente_id,
+                    'fardo' => $venta->fardo ?? 0,
+                    'garrafa' => $venta->garrafa ?? 0,
+                    'pet' => $venta->pet ?? 0,
+                ]);
             }
-
-            RegistroVentasWeekly::create($ventaArray);
         }
 
         // Luego, elimina el contenido de la tabla original

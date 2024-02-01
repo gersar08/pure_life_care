@@ -17,10 +17,10 @@ class RegistroVentasWeeklyController extends Controller
     {
         // Aquí debes validar los datos de la solicitud según las reglas de tu modelo
         $validatedData = $request->validate([
-            'cliente_id' => ['required', 'string'],
-            'fardos'  => ['required', 'string'],
-            'garrafas' => ['required', 'integer'],
-            'pet' => ['required', 'integer']
+            'cliente_id' => 'required',
+            'fardo' => 'required',
+            'garrafa' => 'required',
+            'pet' => 'required'
             // ...
         ]);
 
