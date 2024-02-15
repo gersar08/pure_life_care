@@ -10,7 +10,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // Crear el rol de administrador
-        $adminRole = Role::create(['name' => 'admin', 'guard_name' => 'api']);
+        // $adminRole = Role::create(['name' => 'admin', 'guard_name' => 'api']);
 
         // Crear el usuario administrador
         $admin = User::create([
@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         // Asignar el rol de administrador al usuario administrador
-        $admin->assignRole($adminRole);
+        $admin->assignRole('admin');
 
     }
 }
