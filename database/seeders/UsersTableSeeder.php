@@ -3,22 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        // Crear un rol de administrador $adminRole = Role::create(['name' => 'admin']);
+        // Crear el rol de administrador
+         $adminRole = Role::create(['name' => 'admin', 'guard_name' => 'api']);
 
-        // Crear un usuario
         // Crear el usuario administrador
         $admin = User::create([
             'name' => 'Admin User',
@@ -28,6 +21,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         // Asignar el rol de administrador al usuario administrador
-        $admin->assignRole('admin');
+        $admin->assignRole($adminRole);
+
     }
 }

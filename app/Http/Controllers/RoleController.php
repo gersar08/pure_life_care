@@ -16,7 +16,7 @@ class RoleController extends Controller
         ]);
 
         // Crear el rol
-        $role = Role::create(['name' => $request->name]);
+     //   $role = Role::create(['name' => $request->name]);
 
         // Redirigir al usuario con un mensaje de éxito
         return redirect()->back()->with('success', 'Rol creado exitosamente');
