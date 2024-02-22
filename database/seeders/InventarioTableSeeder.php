@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -17,15 +16,15 @@ class InventarioTableSeeder extends Seeder
             [
                 'product_name' => 'garrafa',
                 'product_area'  => 'produccion',
-                'cantidad' => 100
+                'cantidad' => 1000
             ], [
                 'product_name' => 'fardo',
                 'product_area' => 'produccion',
-                'cantidad' => 100
+                'cantidad' => 1000
             ], [
                 'product_name' => 'pet',
                 'product_area' => 'produccion',
-                'cantidad' => 100
+                'cantidad' => 1000
             ]
         ]);
     }
