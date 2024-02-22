@@ -18,8 +18,8 @@ class CreateClientesTable extends Migration
             $table->string('n_documento')->unique();
             $table->string('departamento');
             $table->string('municipio');
-            $table->string('registro_num');
-            $table->string('giro');
+            $table->string('registro_num')->nullable();
+            $table->string('giro')->nullable();
             $table->timestamps();
         });
     }
