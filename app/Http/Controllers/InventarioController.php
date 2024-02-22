@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inventario;
-use Illuminate\Support\Facades\Gate;
 
 class InventarioController extends Controller
 {
