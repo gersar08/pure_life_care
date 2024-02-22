@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Clientes;
 use App\Models\Inventario;
-use App\Models\Precios;
+use App\Models\Producto;
 
 class AdminController extends Controller
 {
@@ -24,7 +24,7 @@ class AdminController extends Controller
 
     public function prices()
     {
-        $prices = Precios::all();
+        $prices = Producto::all();
         return view('admin.prices', ['prices' => $prices]);
     }
 
