@@ -20,5 +20,9 @@ class Clientes extends Model
         'telefono',
         'direccion',
         'n_documento',
+        'departamento',
+        'municipio',
+        'registro_num',
+        'giro'
     ];
 }
