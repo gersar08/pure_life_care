@@ -2,27 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
-use App\Models\Inventory;
-use App\Models\RegistroVentas;
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Clientes;
+use App\Models\Inventario;
+use App\Models\Producto;
 
 class AdminController extends Controller
 {
     public function users()
     {
-        $users = Users::all();
+        $users = User::all();
         return view('admin.users', ['users' => $users]);
+    }
+
+    public function clients()
+    {
+        $clients = Clientes::all();
+        return view('admin.clients', ['clients' => $clients]);
     }
 
     public function prices()
     {
-        $prices = Inventory::all();
+        $prices = Producto::all();
         return view('admin.prices', ['prices' => $prices]);
     }
 
     public function inventory()
     {
-        $inventory = RegistroVentas::all();
+        $inventory = Inventario::all();
         return view('admin.inventory', ['inventory' => $inventory]);
     }
 }
