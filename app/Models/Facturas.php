@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RegistroVentas extends Model
+class Factura extends Model
 {
     use HasFactory;
+    protected $table = 'facturas';
     protected $fillable = [
-        'nombre_cliente',
-        'direccion',
-        'numero_telefono',
-        'email',
-        'documento',
-        'total',
-        'iva',
+        'cliente_id',
+        'producto_name',
+        'precio',
+        'cantidad',
         'subtotal',
+        'total'
     ];
 }
